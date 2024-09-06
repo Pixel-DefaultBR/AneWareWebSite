@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.navbar {
+    height: 70px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+}
+
+.more {
+    text-decoration: none;
+    color: black;
+}
+
+.more:hover {
+    color: black;
+}
+
+.wrapper {
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.presentation {
+    padding: 4px;
+    width: 50%;
+    height: 50%;
+}
+
+.img-presentation {
+    width: 50%;
+    height: 50%;
+}
+
+.img-coding {
+    width: 100%;
+    height: 100%;
+}
+
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#report-card { 
+    overflow: hidden;
+    max-width: 90%;
+}
+
+.vulnerability-header {
+    display: flex;
+    padding: 2px;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.vulnerabilty-details {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.vulnerability-body {
+    padding: 2px;
+}
+
+#report-card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.like-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.report-title {
+    font-weight: 600;
+    cursor: pointer;
+    color: #564dfe;
+}
+
+.reporter {
+    font-weight: 600;
+    color: #564dfe;
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+.show-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
