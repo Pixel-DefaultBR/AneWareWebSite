@@ -1,0 +1,13 @@
+.app {
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+}
+
+.logo {
+    width: 10px;
+}
+
+.logo-auth {
+    width: 10px;
+}
