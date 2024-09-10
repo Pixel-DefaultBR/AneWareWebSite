@@ -1,10 +1,9 @@
 <?php
-
 class Database {
     private $host = "localhost";
-    private $dbname = "";
-    private $username = "";
-    private $password = "";
+    private $dbname = "aneware_base";
+    private $username = "root";
+    private $password = "root";
     public $conn;
 
     public function __construct() {

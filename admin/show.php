@@ -18,8 +18,6 @@ $report = $reportProcess->getById();
                 <a href="<?= $$baseUrl ?>/admin/dashboard.php" class="btn btn-primary">Voltar</a>
             </div>
         </div>
-
-        
     <?php else: ?>
         <div class="card" id="show-card">
             <div class="card-header">
@@ -32,5 +30,6 @@ $report = $reportProcess->getById();
             </div>
         <?php endif ?>
     </div>
+
 
     <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/templates/footer.php" ?>

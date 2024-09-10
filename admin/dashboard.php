@@ -18,6 +18,7 @@ $reports = $reportDao->getAllReports();
                     <th scope="col">Vulnerabilidade</th>
                     <th scope="col">Gravidade</th>
                     <th scope="col">Status</th>
+
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
@@ -67,3 +68,4 @@ $reports = $reportDao->getAllReports();
 </div>
 
 <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/templates/footer.php"; ?>
+

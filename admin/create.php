@@ -1,6 +1,5 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/templates/header.php";
-
 ?>
 
 <div class="container">
@@ -32,12 +31,19 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/templates/header.php";
             </select>
         </div>
         <div class="mb-3">
+
             <label for="description" class="form-label">Descrição</label>
             <textarea name="description" id="description" class="form-control" required></textarea>
         </div>
         <div class="mb-3">
             <label for="status" class="form-label">Status</label>
             <select class="form-select" id="status" name="status" required>
+            <label for="exampleInputPassword1" class="form-label">Descricao</label>
+            <textarea name="descricao" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Status</label>
+            <select class="form-select" name="status" aria-label="Default select example">
                 <option value="Resolvido">Resolvido</option>
                 <option value="Pendente">Pendente</option>
                 <option value="Informativo">Informativo</option>

@@ -1,5 +1,4 @@
 <?php
-
 require_once $_SERVER["DOCUMENT_ROOT"] . "/global/global.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/database/db.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/dao/ReportDAO.php";
@@ -40,6 +39,7 @@ $isAuthenticad = $userDao->verifyToken(false);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="<?= $baseUrl ?>/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
