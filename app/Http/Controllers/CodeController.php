@@ -9,4 +9,5 @@ class CodeController extends Controller
     public function index(){
         echo 'Hi code controller';
     }
+
 }
