@@ -1,25 +1,44 @@
-let cardComponents = document.querySelectorAll('.apear-card');
-const fileInput = document.getElementById('file-input');
-const imagePreview = document.getElementById('image-preview');
 
-function setUpAnimation(components) {
-    let sec = 1;
-    components.forEach((component) => {
-        sec += 1;
-        component.style.animation = `upAnimation ${sec}s`
-    })
-}
 
-setUpAnimation(cardComponents);
+$(document).ready(function () {
+    $('.card').css('display', 'none');
+    let cardComponents = $('.apear-card');
+    const fileInput = $('.file-input');
+    const imagePreview = $('#image-preview');
+    const sweetAlert = $('.sweeetalert');
 
-fileInput.addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            imagePreview.src = e.target.result;
-            imagePreview.style.display = 'block';
+    $(fileInput).on('change', function () {
+        const file = $(this)[0].files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.attr('src', e.target.result);
+                imagePreview.css('display', 'block');
+            }
+
+            reader.readAsDataURL(file);
         }
-        reader.readAsDataURL(file);
+    });
+
+    function fadeInCards() {
+        let cards = $('.card');
+        let index = 0;
+
+        let interval = setInterval(function () {
+            if (index < cards.length) {
+                $(cards[index]).fadeIn('slow').css('animation', `upAnimation 2s`);
+                index++
+            } else {
+                clearInterval(interval);
+            }
+        }, 500);
+
+        $(element).fadeIn('slow');
     }
-});
+
+   fadeInCards()
+    
+})
+
+
+

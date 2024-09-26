@@ -16,34 +16,43 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate(['email' => 'required|email', 'password' => 'required']);
-        $user = User::where('email', $request->email)->first();
-        if (!$user) {
-            return redirect()->back()->with('error', 'Email ou senha invalido.');
-        }
+        $credentials = $request->validate(['email' => 'required|email', 'password' => 'required']);
 
-        if (!password_verify($request->password, $user->password)) {
-            return redirect()->back()->with('error', 'Email ou senha invalido.');
-        }
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        Auth::loginUsingId($user->id);
-        if (Auth::check()) {
-            return redirect()->route('app.dashboard.index')->with('Voce esta logado!');
+            return redirect()->route('app.dashboard.index')->with('success', 'Bem vindo!');
         }
 
         return view('app.auth.index');
-
     }
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('site.home')->with('You have signed-in');
+        return redirect()->route('site.home')->with('success', 'Ate logo!');
     }
     public function register(Request $request)
     {
-        $request->validate(['name' => 'required', 'email' => 'required|email', 'password' => 'required']);
+        $request->validate(['name' => 'required', 'email' => 'required|email', 'password' => 'required', 'confirmPassword' => 'required']);
+
+        if ($request->password !== $request->confirmPassword) {
+            return redirect()->back()->with('error', 'Senhas diferentes.');
+        }
+
         $data = $request->all();
-        $check = User::create($data);
-        return redirect()->route('site.home')->with('You have signed-in');
+        $user = User::create($data);
+
+        Auth::loginUsingId($user->id);
+
+        return redirect()->route('site.home')->with('success', 'You have signed-in');
+    }
+
+    public static function checkAuth()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('site.home')->with('error', 'Você precisa estar autenticado para realizar esta ação.');
+        }
+
+        return null;
     }
 }

@@ -1,4 +1,5 @@
-@include('templates.sidebar')
+@extends('master')
+@section('content')
 
 <div class="container mt-4">
 
@@ -57,4 +58,5 @@
     </form>
 </div>
 
-@include('templates.footer')
+
+@endsection

@@ -10,7 +10,9 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('site.home');
 
+
 Route::middleware('auth')->group(function () {
+    Route::get('/app', function() {return redirect()->route('site.home');});
     Route::post('/reports', [ReportController::class, 'store'])->name('site.report.store');
     Route::post('/update', [ReportController::class, 'update'])->name('site.report.update');
     Route::post('/delete', [ReportController::class, 'destroy'])->name('site.report.destroy');

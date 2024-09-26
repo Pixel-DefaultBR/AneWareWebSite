@@ -1,5 +1,8 @@
-@include('templates.sidebar')
-<div class="container-xl px-4 mt-4">
+@extends('master')
+@section('content')<!-- Inclui o arquivo sidebar.blade.php -->
+
+
+<div class="container px-4">
     <hr class="mt-0 mb-4">
     <div class="row">
         <div class="col-lg-4">
@@ -65,4 +68,4 @@
     </div>
 </div>
 
-@include('templates.footer')
+@endsection

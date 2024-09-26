@@ -1,4 +1,5 @@
-@include('templates.sidebar')
+@extends('master')
+@section('content')<!-- Inclui o arquivo sidebar.blade.php -->
 
 <div class="container mt-4">
 
@@ -14,11 +15,11 @@
         </div>
         <div class="mb-3">
             <label for="researcher" class="form-label">Pesquisador</label>
-            <input type="text" class="form-control" id="researcher" name="researcher" required>
+            <input type="text" class="form-control" id="researcher" name="researcher" value="{{auth()->user()->name}}" disabled readonly required>
         </div>
         <div class="mb-3">
             <label for="vulnerability_type" class="form-label">Tipo de Vulnerabilidade</label>
-            <input type="text" class="form-control" id="vulnerability_type" name="vulnerability_type" required>
+            <input type="text" class="form-control " style="shadow-none" id="vulnerability_type" name="vulnerability_type"  required>
         </div>
         <div class="mb-3">
             <label for="severity" class="form-label">Gravidade</label>
@@ -51,5 +52,4 @@
         <button type="submit" class="btn btn-dark">Adicionar Relatório</button>
     </form>
 </div>
-
-@include('templates.footer')
+@endsection

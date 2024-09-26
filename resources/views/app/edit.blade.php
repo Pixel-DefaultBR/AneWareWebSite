@@ -1,7 +1,23 @@
-@include('templates.sidebar')
+@extends('master')
+@section('content')
 
+@if ($errors->any())
+    <script>
+        @foreach ($errors->all() as $error)
+            $(document).ready(function () {
+                Swal.fire({
+                    title: "Ops..",
+                    icon: "error",
+                    timer: 2000,
+                    html: '{{ $error }}',
+                    timerProgressBar: true
+                });
+            });
+        @endforeach
+    </script>
+@endif
 
-<div class="container-xl px-4 mt-4">
+<div class="container-xl px-4">
     <hr class="mt-0 mb-4">
     <form class="row" action="{{route('app.update')}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -70,11 +86,10 @@
                     <!-- Form Group (bio)-->
                     <div class="mb-3">
                         <label class="small mb-1" for="inputEmailAddress">README.md</label>
-                        <textarea  class="form-control" name="description" id="" placeholder="Fale Sobre você"
+                        <textarea class="form-control" name="description" id="" placeholder="Fale Sobre você"
                             style="height: 50vh; resize: none">{{$user->description}}</textarea>
                     </div>
                     <!-- Save changes button-->
-                    <input type="hidden" value="{{$user->email}}" name="email">
                     <input type="hidden" name="id" value="{{$user->id}}">
                     <button class="btn btn-dark" type="submit">Salvar
                     </button>
@@ -84,4 +99,5 @@
     </form>
 </div>
 
-@include('templates.footer')
+
+@endsection

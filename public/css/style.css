@@ -8,17 +8,36 @@ html,
 body {
     background-color: #ffffff;
     width: 100%;
-    height: 100vh;
-}
-
-
-.nav-container {
-    background-color: #0482ff00;
-}
-
-.main-layout-container {
-    width: 100%;
     height: 100%;
+
+}
+
+.container {
+    min-height: 100%;
+}
+
+.content-wrapper {
+    height: 100%;
+    margin-top: 30px;
+}
+
+.report-container {
+    overflow: auto;
+    max-height: 100vh;
+}
+
+.report-container::-webkit-scrollbar {
+    width: 2px;
+}
+
+.report-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(210, 208, 208, 0.3);
+    border-radius: 4px;
+}
+
+.report-container::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 0 6px rgba(68, 68, 68, 0.5);
 }
 
 .home-page {
@@ -36,10 +55,13 @@ body {
 
 .blocks {
     display: flex;
-    min-width: 900px;
-    justify-content: space-between;
+    min-width: 60em;
+    margin-top: -30px;
 }
 
+.apear-card {
+    margin-left: 12px;
+}
 
 .landing-image {
     width: 100%;
@@ -50,6 +72,7 @@ body {
     width: 150px;
     margin-right: 40px;
 }
+
 
 .client-img {
     width: 40px;
@@ -62,6 +85,11 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    margin-bottom: 3px;
 }
 
 .card-header {
@@ -85,7 +113,6 @@ body {
 
 .bio {
     word-wrap: break-word;
-   
 }
 
 .bio-area {
@@ -112,7 +139,6 @@ body {
     width: 100%;
     justify-content: space-between;
 }
-
 
 @keyframes upAnimation {
     from {

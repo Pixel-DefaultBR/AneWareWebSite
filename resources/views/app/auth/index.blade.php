@@ -1,6 +1,7 @@
-@include('templates.sidebar');
+@extends('master')
+@section('content')
 
-<div class="container py-5">
+<div class="container mb-12 py-1">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-10">
             <div class="card rounded-3 text-black">
@@ -10,21 +11,21 @@
                             <div class="text-center">
                                 <h4 class="mt-1 mb-5 pb-1">Entre</h4>
                             </div>
-
                             <form action="{{route('app.auth.login')}}" method="post">
                                 @csrf
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="form2Example11">Email</label>
-                                    <input type="email" id="form2Example11" class="form-control" name="email"
-                                        required value="" />
+                                    <input type="email" id="form2Example11" class="form-control" name="email" required
+                                        value="" />
                                 </div>
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="form2Example22" name="password">Password</label>
-                                    <input type="password" id="form2Example22" class="form-control" name="password"  value=""/>
+                                    <input type="password" id="form2Example22" class="form-control" name="password"
+                                        value="" />
                                 </div>
                                 <div class="text-center row pt-1 mb-5 pb-1">
-                                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-secondary btn-block"
-                                        type="submit">Login</button>
+                                    <button data-mdb-button-init data-mdb-ripple-init
+                                        class="btn btn-secondary btn-block" type="submit">Login</button>
                                 </div>
                             </form>
                         </div>
@@ -54,7 +55,7 @@
                                 <div class="mb-3">
                                     <label for="confirmPassword" class="form-label">Confirme sua senha</label>
                                     <input type="password" class="form-control" id="confirmPassword"
-                                        name="confirm-password" required>
+                                        name="confirmPassword" required>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="btn btn-secondary">Criar conta</button>
@@ -68,9 +69,4 @@
     </div>
 </div>
 
-<!-- REGISTER
- 
-<div class="register-field">
-   
-</div>
-</div>-->
+@endsection

@@ -1,4 +1,5 @@
-@include('templates.sidebar')
+@extends('master')
+@section('content')
 
 @if(auth()->check())
     <div class="container mt-4">
@@ -64,3 +65,6 @@
 @else
     <span>Nao ta logado nao mano</span>
 @endif
+
+
+@endsection

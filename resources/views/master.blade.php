@@ -2,6 +2,7 @@
 <html lang="en">
 
 @if(auth()->check())
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
             crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script src="https://kit.fontawesome.com/f22d008a67.js" crossorigin="anonymous"></script>
         <title>AneWare Security</title>
@@ -52,8 +55,9 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false" href="#">Bem vindo, {{auth()->user()->name}}</a>
                             <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('app.dashboard.index')}}">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="{{route('app.index', auth()->user()->name)}}">Perfil</a></li>
+                                <li><a class="dropdown-item" href="{{route('app.dashboard.index')}}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{route('app.index', auth()->user()->name)}}">Perfil</a>
+                                </li>
                                 <li><a class="dropdown-item" href="{{route('app.auth.logout')}}">Sair</a></li>
                             </ul>
                         </li>
@@ -61,6 +65,31 @@
                 </div>
             </div>
         </nav>
+
+        @if (session('error'))
+            <script>
+                $(document).ready(function () {
+                    Swal.fire({
+                        title: "Ops..",
+                        icon: "error",
+                        timer: 2000,
+                        html: '{{session('error')}}',
+                        timerProgressBar: true
+                    });
+                });
+            </script>
+        @elseif(session('success'))
+            <script>
+                $(document).ready(function () {
+                    Swal.fire({
+                        icon: "success",
+                        timer: 2000,
+                        html: '{{session('success')}}',
+                        timerProgressBar: true
+                    });
+                });
+            </script>
+        @endif
 @else
 
     <head>
@@ -75,13 +104,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
             crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script src="https://kit.fontawesome.com/f22d008a67.js" crossorigin="anonymous"></script>
         <title>AneWare Security</title>
     </head>
 
-    <body>
-        <nav class="navbar navbar-expand-lg nav-container">
+    <header>
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid ">
                 <a class="navbar-brand" href="#">A-W Sec</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -112,4 +143,53 @@
                 </div>
             </div>
         </nav>
+    </header>
+
+    <body>
+        @if (session('error'))
+            <script>
+                $(document).ready(function () {
+                    Swal.fire({
+                        title: "Ops..",
+                        icon: "error",
+                        timer: 2000,
+                        html: '{{session('error')}}',
+                        timerProgressBar: true
+                    });
+                });
+            </script>
+        @elseif(session('success'))
+            <script>
+                $(document).ready(function () {
+                    Swal.fire({
+                        icon: "success",
+                        timer: 2000,
+                        html: '{{session('success')}}',
+                        timerProgressBar: true
+                    });
+                });
+            </script>
+        @endif
 @endif
+
+
+        <div class="container">
+            <div class="container py-2">
+                @yield('content')
+            </div>
+        </div>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
+        </footer>
+        <script src="{{asset('js/script.js')}}"></script>
+    </body>
+
+</html>
