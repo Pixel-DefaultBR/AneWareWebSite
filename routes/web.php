@@ -10,9 +10,14 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('site.home');
 
+Route::fallback(function () {
+    return redirect()->route('site.home');
+});
 
 Route::middleware('auth')->group(function () {
-    Route::get('/app', function() {return redirect()->route('site.home');});
+    Route::get('/app', function () {
+        return redirect()->route('site.home');
+    });
     Route::post('/reports', [ReportController::class, 'store'])->name('site.report.store');
     Route::post('/update', [ReportController::class, 'update'])->name('site.report.update');
     Route::post('/delete', [ReportController::class, 'destroy'])->name('site.report.destroy');
@@ -25,6 +30,7 @@ Route::controller(ReportController::class)->group(function () {
 Route::prefix('/app')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('app.dashboard.index');
     Route::get('/auth', [AuthController::class, 'index'])->name('app.auth.index');
+    Route::get('/start', [AuthController::class, 'start'])->name('app.auth.start');
     Route::post('/login', [AuthController::class, 'login'])->name('app.auth.login');
     Route::post('/register', [AuthController::class, 'register'])->name('app.auth.register');
 
@@ -41,11 +47,12 @@ Route::prefix('/app')->group(function () {
     Route::prefix('/dashboard')->middleware('auth')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('app.dashboard.index');
         Route::get('/create', [DashboardController::class, 'create'])->name('app.dashboard.create');
-        Route::get('/edit/{id?}', [DashboardController::class, 'edit'])->name('app.dashboard.edit');
+        Route::get('/edit/{id}', [DashboardController::class, 'edit'])->name('app.dashboard.edit');
     });
 });
 
 Route::get('/codes', [CodeController::class, 'index'])->name('site.code');
+Route::post('/codes', [CodeController::class, 'index'])->name('site.code');
 Route::get('/about', [AboutController::class, 'index'])->name('site.about');
 
 

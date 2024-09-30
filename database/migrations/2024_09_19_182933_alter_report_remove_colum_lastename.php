@@ -14,7 +14,9 @@ class AlterReportRemoveColumLastename extends Migration
     public function up()
     {
         Schema::table('reports', function (Blueprint $table) {
-            $table->dropColumn('lastname');
+            if (Schema::hasColumn('reports', 'lastname')) {
+                $table->dropColumn('lastname');
+            }
         });
     }
 

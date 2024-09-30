@@ -44,25 +44,29 @@ class UserController extends Controller
 
         $user = User::find($request->id);
 
-        if ($user && $user->id === auth()->user()->id) {
-            $user->name = str_replace(' ', '-', $request->name);
-            $user->update($request->only([
-                'description',
-                'website',
-                'github',
-                'twitter',
-                'instagram',
-                'facebook',
-            ]));
+        $exist = User::where('name', $request->name)->exists();
+        if (!$exist || ($request->name === $user->name)) {
+            if ($user && $user->id === auth()->user()->id) {
+                $user->name = str_replace(' ', '-', $request->name);
+                $user->update($request->only([
+                    'description',
+                    'website',
+                    'github',
+                    'twitter',
+                    'instagram',
+                    'facebook',
+                ]));
 
-            if ($request->hasFile('image')) {
-                $uploadImage = $this->handleImageUpload($request);
-                $user->image = $uploadImage;
-                $user->save();
+                if ($request->hasFile('image')) {
+                    $uploadImage = $this->handleImageUpload($request);
+                    $user->image = $uploadImage;
+                    $user->save();
+                }
+
+                return redirect()->route('app.index', $user->name)->with('success', 'Dados atualizado com sucesso!');
             }
-
-            return redirect()->route('app.index', $user->name)->with('success', 'Dados atualizado com sucesso!');
         }
+        return redirect()->back()->with('error', 'Nome inserido já está sendo usado.');
     }
     private function handleImageUpload(Request $request)
     {

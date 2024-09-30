@@ -1,22 +1,6 @@
 @extends('master')
 @section('content')
 
-@if ($errors->any())
-    <script>
-        @foreach ($errors->all() as $error)
-            $(document).ready(function () {
-                Swal.fire({
-                    title: "Ops..",
-                    icon: "error",
-                    timer: 2000,
-                    html: '{{ $error }}',
-                    timerProgressBar: true
-                });
-            });
-        @endforeach
-    </script>
-@endif
-
 <div class="container-xl px-4">
     <hr class="mt-0 mb-4">
     <form class="row" action="{{route('app.update')}}" method="post" enctype="multipart/form-data">

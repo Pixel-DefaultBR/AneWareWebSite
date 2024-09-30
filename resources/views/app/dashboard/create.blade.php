@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label for="researcher" class="form-label">Pesquisador</label>
-            <input type="text" class="form-control" id="researcher" name="researcher" value="{{auth()->user()->name}}" disabled readonly required>
+            <input type="text" class="form-control" id="researcher" name="researcher" value="{{auth()->user()->name}}" readonly required>
         </div>
         <div class="mb-3">
             <label for="vulnerability_type" class="form-label">Tipo de Vulnerabilidade</label>
@@ -48,7 +48,7 @@
             <label for="image" class="form-label">Imagem (URL)</label>
             <input type="file" class="form-control" id="image" name="image">
         </div>
-
+        
         <button type="submit" class="btn btn-dark">Adicionar Relatório</button>
     </form>
 </div>

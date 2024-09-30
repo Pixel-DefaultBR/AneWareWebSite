@@ -28,6 +28,7 @@ class ReportController extends Controller
         $report->vulnerability_type = $request->vulnerability_type;
         $report->severity = $request->severity;
         $report->status = $request->status;
+        $report->user_id = auth()->user()->id;
 
         $uploadImage = $this->handleImageUpload($request);
 
@@ -44,6 +45,11 @@ class ReportController extends Controller
         $this->handleInputValidadte($request);
 
         $report = Report::findOrFail($request->id);
+
+        if ($report->user_id !== auth()->user()->id) {
+            return redirect()->route('app.dashboard.index')->with('error', 'Você não tem permissão para editar este relatório.');
+        }
+
         $report->update($request->only([
             'client',
             'researcher',
@@ -66,10 +72,15 @@ class ReportController extends Controller
     {
         try {
             $report = Report::where('id', $request->id)->firstOrFail();
+            
+            if ($report->user_id !== auth()->user()->id) {
+                return redirect()->route('app.dashboard.index')->with('error', 'Você não tem permissão para deletar este relatório.');
+            }
+
             $report->delete();
             return redirect()->route('app.dashboard.index')->with('success', 'Relatorio deletado com sucesso!');
         } catch (\Exception $error) {
-           
+
         }
 
     }

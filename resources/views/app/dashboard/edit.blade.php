@@ -18,7 +18,7 @@
         <div class="mb-3">
             <label for="researcher" class="form-label">Pesquisador</label>
             <input type="text" class="form-control" id="researcher" name="researcher" required
-                value="{{$report->researcher}}">
+                value="{{$report->researcher}}" readonly>
         </div>
         <div class="mb-3">
             <label for="vulnerability_type" class="form-label">Tipo de Vulnerabilidade</label>

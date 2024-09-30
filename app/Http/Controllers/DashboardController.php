@@ -27,13 +27,18 @@ class DashboardController extends Controller
         return view('app.dashboard.create');
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        if ($redirect = AuthController::checkAuth()) {
-            return $redirect;
-        }
+        $request->validate([
+            'id' => 'numeric',
+        ]);
 
-        $report = Report::find($id);
-        return view('app.dashboard.edit', compact('report')); // Ajuste para o caminho correto da view
+        $report = Report::find($request->id);
+
+        if (!$report) {
+            return redirect()->back()->with('error','Relatório não encontrado.');
+        }
+        
+        return view('app.dashboard.edit', compact('report'));
     }
 }

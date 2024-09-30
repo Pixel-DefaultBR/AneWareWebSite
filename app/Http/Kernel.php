@@ -62,5 +62,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'block.storage' => \App\Http\Middleware\BlockStorageRoute::class,
+        'block.404.route' => \App\Http\Middleware\Block404Routes::class,
     ];
 }

@@ -14,17 +14,22 @@ class AuthController extends Controller
         return view('app.auth.index');
     }
 
+    public function start()
+    {
+        return view('app.auth.start');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate(['email' => 'required|email', 'password' => 'required']);
 
-        if(Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->route('app.dashboard.index')->with('success', 'Bem vindo!');
         }
 
-        return view('app.auth.index');
+        return redirect()->back()->with('error', 'E-mail e/ou senha inválidos.');
     }
     public function logout()
     {
@@ -33,7 +38,19 @@ class AuthController extends Controller
     }
     public function register(Request $request)
     {
-        $request->validate(['name' => 'required', 'email' => 'required|email', 'password' => 'required', 'confirmPassword' => 'required']);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4',
+            'confirmPassword' => 'required'
+        ], [
+            'name.required' => 'Campo nome é obrigatório.',
+            'email.unique' => 'E-mail já cadastrado.',
+            'email.required',
+            'Campo E-mail é obrigatório',
+            'email.email' => 'E-mail inválido.',
+            'password.min' => 'Senha muito curta.'
+        ]);
 
         if ($request->password !== $request->confirmPassword) {
             return redirect()->back()->with('error', 'Senhas diferentes.');

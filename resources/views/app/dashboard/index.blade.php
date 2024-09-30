@@ -2,6 +2,7 @@
 @section('content')
 
 @if(auth()->check())
+
     <div class="container mt-4">
         <a href="{{route('app.dashboard.create')}}" class="btn btn-light mb-3">ADD
             Relatório+</a>
