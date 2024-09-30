@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{asset('css/style.css?v=' . time())}}">
+        <link rel="stylesheet" href="{{ secure_asset('css/style.css?v=' . time()) }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -38,13 +38,12 @@
                         </li>
                         <li><a class="nav-link" href="{{route('site.code')}}">Códigos</a></li>
                         <li><a class="nav-link" href="{{route('site.about')}}">Sobre nós</a></li>
-
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false" href="#">
-                                <img class="top-perfil-image" src="{{asset('storage/img/' . (auth()->user()->image ?? 'default.jpg'))}}" />
+                                aria-expanded="false">
+                                <img class="top-perfil-image" src="{{secure_asset('storage/img/' . (auth()->user()->image ?? 'default.jpg'))}}" />
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('app.dashboard.index')}}">Dashboard</a></li>
@@ -62,7 +61,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{asset('css/style.css?v=' . time())}}">
+        <link rel="stylesheet" href="{{ secure_asset('css/style.css?v=' . time()) }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -78,7 +77,7 @@
         <title>AneWare Security</title>
     </head>
 
-    <header>
+    <body>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid ">
                 <a class="navbar-brand" href="{{route('site.home')}}">A-W Sec</a>
@@ -95,15 +94,12 @@
                         <li><a class="nav-link" href="{{route('site.code')}}">Códigos</a></li>
                         <li><a class="nav-link" href="{{route('site.about')}}">Sobre nós</a></li>
                     </ul>
-                    <a class="btn bg-light bg-light btn-login" href="{{route('app.auth.index')}}"><i
+                    <a class="btn bg-light btn-login" href="{{route('app.auth.index')}}"><i
                             class="fa-solid fa-door-open"></i></a>
-
                 </div>
             </div>
         </nav>
-    </header>
-
-    <body>
+    </body>
 @endif
         <div class="container">
             <div class="container py-2">
@@ -142,9 +138,7 @@
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
             </ul>
-            <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
+            <p class="text-center text-body-secondary">© 2023 AneWare, Inc</p>
         </footer>
-        <script src="{{asset('js/script.js?v=') . time() }}"></script>
     </body>
-
 </html>
