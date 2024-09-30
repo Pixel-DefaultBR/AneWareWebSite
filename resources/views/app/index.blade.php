@@ -8,7 +8,7 @@
         <div class="col-lg-4">
             <div class="card mb-4">
                 <div class="card-body text-center">
-                    <img src="{{asset('storage/img/' . ($user->image ?? 'default.jpg'))}}"
+                    <img src="{{secure_asset('storage/img/' . ($user->image ?? 'default.jpg'))}}"
                         class="rounded-circle mb-2" alt="User Image"
                         style="max-width: 100px; height:100px; object-fit: cover;">
                     <h5 class="my-3">{{$user->name}}</h5>
