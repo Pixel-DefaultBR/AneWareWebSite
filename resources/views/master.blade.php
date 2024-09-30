@@ -140,5 +140,6 @@
             </ul>
             <p class="text-center text-body-secondary">© 2023 AneWare, Inc</p>
         </footer>
+         <script src="{{secure_asset('js/script.js?v=') . time() }}"></script>
     </body>
 </html>
