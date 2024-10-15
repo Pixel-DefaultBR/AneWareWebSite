@@ -1,0 +1,150 @@
+:root {
+    /*Cores principais do projeto*/
+    --purple-light: #F9F0FE;
+    --purple-light-houver: #F5E9FE;
+    --purple-light-active: #F9F0FE;
+    --purple-normal: #BE6BF5;
+    --purple-normal-houver: #AB60DD;
+    --purple-normal-active: #9856C4;
+    --purple-dark: #8F50B8;
+
+    /*Cores de status / gravidade*/
+    --status-infomative: #0076A8;
+    --status-low: #63BB8D;
+    --status-medium: #FFE97A;
+    --status-high: #FFC64D;
+    --status-critical: #FF4D4D;
+
+    /*Cores globais*/
+    --white: #FFFFFF;
+    --black: #000000;
+
+    --background-color-dark: #323232;
+    --backgorund-color-light: #FFFFFF;
+
+    /*Tamanho de fontes*/
+    --h1-display: 68px;
+    --h2-large-title: 40px;
+    --h3-title: 28px;
+    --h4-subtitle: 24px;
+    --h5-body-large: 20px;
+    --h6-body: 14px;
+}
+
+.login-wrapper {
+    min-width: 100vw;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 60px;
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-title>h3 {
+    font-weight: bold;
+}
+
+.sub-login-title {
+    font-size: var(--h5-body-large);
+}
+
+.social-media-login {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.btn-sm-login {
+    background-color: var(--purple-light);
+    width: inherit;
+    color: var(--purple-normal);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.btn-sm-login:hover {
+    background-color: var(--purple-normal-houver);
+    color: var(--purple-light-houver);
+}
+
+.btn-sm-login>i {
+    left: 10px;
+    position: absolute;
+    margin-right: 28px;
+}
+
+.email-login {
+    width: inherit;
+    height: inherit;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.email-login>form>input {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.options>a>span,
+.options>span {
+    color: var(--purple-normal);
+    cursor: pointer;
+}
+
+.modal-wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border-top: 10px solid var(--purple-normal);
+    box-shadow: 0 0 14px 1px rgb(77, 77, 77);
+    background-color: var(--purple-light);
+}
+
+.modal-inputs>h3 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--purple-normal);
+}
+
+.modal-inputs>input {
+    margin-bottom: 20px;
+    width: 50%;
+}
