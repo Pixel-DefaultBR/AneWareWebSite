@@ -9,61 +9,32 @@
 
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Aneware Security 🔒
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Bem-vindo ao **Aneware Security**! Somos um time apaixonado e em crescimento, focado em segurança da informação. Nossa missão é aprender, compartilhar conhecimento e contribuir para um ambiente digital mais seguro. 🌐
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Nossa Equipe 👥
 
-## Learning Laravel
+Nosso time é composto por profissionais iniciantes e intermediários, todos dedicados a explorar as complexidades da segurança cibernética. Acreditamos que a prática e a colaboração são fundamentais para o nosso desenvolvimento. 🤝
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### O que fazemos 🔍
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Testes de Segurança**: Realizamos testes de segurança em várias aplicações, identificando e reportando vulnerabilidades. 🛡️
+- **Relatórios de Bug Bounty**: Compilamos nossos achados em relatórios de bug bounty, que são documentados e disponibilizados para consulta. 📊
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Relatórios de Bug Bounty 📑
 
-## Laravel Sponsors
+Navegue pelos nossos relatórios de bug bounty e veja as vulnerabilidades que encontramos, as metodologias que usamos e as soluções propostas. 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Contribua Conosco 🤗
 
-### Premium Partners
+Se você é um entusiasta de segurança da informação, entre em contato! Estamos sempre abertos a colaborações e troca de ideias. 💬
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Junte-se a Nós! 🌟
 
+Siga-nos nas redes sociais para ficar por dentro das nossas atividades e das últimas novidades em segurança da informação. Juntos, podemos tornar o mundo digital um lugar mais seguro! 🌍
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Aneware Security** - Aprendendo, compartilhando e protegendo! 🔐
