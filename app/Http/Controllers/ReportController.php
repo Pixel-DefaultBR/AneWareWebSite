@@ -4,111 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Report;
-use Illuminate\Support\Facades\Storage;
-
 class ReportController extends Controller
 {
     public function index()
     {
-
-        $reports = Report::all();
-
-        return view('site.report', compact('reports'));
+        $reports = Report::orderBy("created_at", "desc")->simplePaginate(6);
+        return view('site.report.index', compact('reports'));
     }
 
     public function store(Request $request)
     {
-        $this->handleInputValidadte($request);
+        if ($request->isMethod('post')) {
+            $request->merge(['reported_for_user_id' => auth()->user()->id]);
 
-        $report = new Report();
-        $report->client = $request->client;
-        $report->researcher = $request->researcher;
-        $report->title = $request->title;
-        $report->description = $request->description;
-        $report->vulnerability_type = $request->vulnerability_type;
-        $report->severity = $request->severity;
-        $report->status = $request->status;
-        $report->user_id = auth()->user()->id;
+            $data = $request->all();
 
-        $uploadImage = $this->handleImageUpload($request);
+            Report::create($data);
 
-        $report->image = $uploadImage;
-
-        $report->save();
-
-        return redirect()->route('site.report.index')->with('success', 'Relatorio criado com sucesso!');
-    }
-
-
-    public function update(Request $request)
-    {
-        $this->handleInputValidadte($request);
-
-        $report = Report::findOrFail($request->id);
-
-        if ($report->user_id !== auth()->user()->id) {
-            return redirect()->route('app.dashboard.index')->with('error', 'Você não tem permissão para editar este relatório.');
+            return redirect()->route('site.profile.profile')->with('success', 'Relatorio criado como sucesso.');
         }
 
-        $report->update($request->only([
-            'client',
-            'researcher',
-            'title',
-            'description',
-            'vulnerability_type',
-            'severity',
-            'status'
-        ]));
-
-        if ($request->hasFile('image')) {
-            $uploadImage = $this->handleImageUpload($request);
-            $report->image = $uploadImage;
-            $report->save();
-        }
-
-        return redirect()->route('app.dashboard.index')->with('success', 'Relatório atualizado com sucesso!');
+        return view('site.report.store');
     }
+
     public function destroy(Request $request)
     {
-        try {
-            $report = Report::where('id', $request->id)->firstOrFail();
-            
-            if ($report->user_id !== auth()->user()->id) {
-                return redirect()->route('app.dashboard.index')->with('error', 'Você não tem permissão para deletar este relatório.');
-            }
+        $report = Report::where('id', $request->id)->firstOrFail();
 
-            $report->delete();
-            return redirect()->route('app.dashboard.index')->with('success', 'Relatorio deletado com sucesso!');
-        } catch (\Exception $error) {
-
+        if (!auth()->check()) {
+            return redirect()->route('auth.index')->with('error', 'Faca login para realizar esta operacao');
         }
 
-    }
-
-    // Handles
-    private function handleImageUpload(Request $request)
-    {
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = $file->hashName();
-
-            $file->store('img', 'public');
-            return $filename;
+        if ($report->reported_for_user_id != auth()->user()->id) {
+            return redirect()->route('')->with('error', 'Voce nao tem permissao para acessar este recurso.');
         }
 
-        return null;
+        $report->delete();
+        return redirect()->back()->with('success', 'Relatorio deletado com sucesso');
     }
-    private function handleInputValidadte(Request $request)
-    {
-        $request->validate([
-            'client' => 'required',
-            'researcher' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'vulnerability_type' => 'required',
-            'severity' => 'required',
-            'status' => 'required',
-            'image' => 'bail|image|mimes:jpeg,jpg,png|max:2048'
-        ]);
-    }
+
 }

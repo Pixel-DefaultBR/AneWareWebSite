@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
+
+    use HasFactory;
+
     protected $fillable = [
-        'client',
-        'researcher',
         'title',
         'description',
-        'vulnerability_type',
-        'severity',
+        'user',
         'status',
+        'severity',
         'image',
+        'reported_for_user_id',
     ];
 }

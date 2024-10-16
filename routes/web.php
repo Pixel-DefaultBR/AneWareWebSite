@@ -1,58 +1,39 @@
 <?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CodeController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
 
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AuthController;
+
+
+// Main routes
 Route::get('/', [HomeController::class, 'index'])->name('site.home');
 
-Route::fallback(function () {
-    return redirect()->route('site.home');
+Route::get('/profile', [ProfileController::class, 'index'])->name('site.profile.profile');
+Route::post('/profile/edit', [ProfileController::class, 'edit'])->name('site.profile.edit');
+
+Route::prefix('/report')->group(function () {
+    Route::get('/', [ReportController::class, 'index'])->name('site.report.index');
+    Route::get('/create', [ReportController::class, 'store'])->name('site.report.store');
+    Route::post('/create', [ReportController::class, 'store'])->name('site.report.store');
+
+    Route::get('/delete/{id?}', [ReportController::class, 'destroy'])->name('site.report.delete');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/app', function () {
-        return redirect()->route('site.home');
-    });
-    Route::post('/reports', [ReportController::class, 'store'])->name('site.report.store');
-    Route::post('/update', [ReportController::class, 'update'])->name('site.report.update');
-    Route::post('/delete', [ReportController::class, 'destroy'])->name('site.report.destroy');
+Route::prefix('/auth')->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('auth.index');
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::post('/edit', [AuthController::class, 'edit'])->name('auth.edit');
 });
 
-Route::controller(ReportController::class)->group(function () {
-    Route::get('/reports', 'index')->name('site.report.index');
+
+// Falback route
+Route::fallback(function() {
+    return redirect()->route('site.home')->with('error', 'Recurso não encontrado.');
 });
-
-Route::prefix('/app')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('app.dashboard.index');
-    Route::get('/auth', [AuthController::class, 'index'])->name('app.auth.index');
-    Route::get('/start', [AuthController::class, 'start'])->name('app.auth.start');
-    Route::post('/login', [AuthController::class, 'login'])->name('app.auth.login');
-    Route::post('/register', [AuthController::class, 'register'])->name('app.auth.register');
-
-    Route::controller(AuthController::class)->middleware('auth')->group(function () {
-        Route::get('/logout', 'logout')->name('app.auth.logout');
-    });
-
-    Route::controller(UserController::class)->middleware('auth')->group(function () {
-        Route::get('/{username}', 'index')->name('app.index');
-        Route::get('/edit/{username}/', 'edit')->name('app.edit');
-        Route::post('/update', 'update')->name('app.update');
-    });
-
-    Route::prefix('/dashboard')->middleware('auth')->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('app.dashboard.index');
-        Route::get('/create', [DashboardController::class, 'create'])->name('app.dashboard.create');
-        Route::get('/edit/{id}', [DashboardController::class, 'edit'])->name('app.dashboard.edit');
-    });
-});
-
-Route::get('/codes', [CodeController::class, 'index'])->name('site.code');
-Route::post('/codes', [CodeController::class, 'index'])->name('site.code');
-Route::get('/about', [AboutController::class, 'index'])->name('site.about');
-
 

@@ -1,56 +1,35 @@
 @extends('master')
-@section('content')<!-- Inclui o arquivo sidebar.blade.php -->
 
-<div class="home-page">
-    <div class="container landing">
-        <div class=" position-relative p-3 text-center text-muted bg-body border-0 border-dashed rounded-2 apear-card">
-            <h1 class="text-body-emphasis">Aneware Security</h1>
-            <p class="col-lg-6 mx-auto mb-4">
-                A Aneware Security é uma empresa inovadora no setor de segurança da informação, oferecendo serviços
-                especializados em proteção cibernética, auditoria de sistemas e testes de penetração. Nosso objetivo
-                é garantir a segurança dos seus dados e sistemas contra ameaças digitais.
-            </p>
-            <button class="btn btn-light px-5 mb-5" type="button">
-                Saiba mais
-            </button>
-        </div>
-        <div class="blocks">
-            <div class="card apear-card border-0" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Serviços Personalizados</h5>
-                    <p class="card-text">Nossos serviços são customizados para atender as necessidades específicas
-                        de cada cliente, garantindo a máxima proteção e eficiência.</p>
 
-                    <a href="#" class="btn btn-light">Ver serviços</a>
+@section('content')
 
-                </div>
+<section class="landing-page-wrapper">
+    <div class="landing-content-container">
+        <div class="bubble-1"></div>
+        <div class="bubble-2"></div>
+        <div class="bubble-3"></div>
+        <div class="content-wrapper">
+            <div class="title-apresentation">
+                <h1>Aneware Security</h1>
             </div>
-            <div class="card apear-card border-0" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Consultoria de Segurança</h5>
-                    <p class="card-text">Oferecemos consultoria especializada em segurança da informação para
-                        proteger sua empresa contra as mais diversas ameaças.</p>
-
-                    <a href="#" class="btn btn-light">Saiba mais</a>
-
-                </div>
+            <div class="landing-content">
+                <span>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum."
+                </span>
             </div>
-            <div class="card apear-card border-0" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Auditoria e Pentest</h5>
-                    <p class="card-text">Realizamos auditorias de segurança e testes de penetração completos para
-                        identificar vulnerabilidades e aumentar a segurança dos sistemas.</p>
-
-                    <a href="#" class="btn btn-light">Solicitar auditoria</a>
-                </div>
+            <div class="landing-btn">
+                <a class="btn btn-landing-login">Entrar</a>
+                <a class="btn btn-landing-about">Saiba mais</a>
             </div>
         </div>
     </div>
-
-    <div class="landing-image-container">
-
-        <img class="landing-image" src="{{asset('/img/coding.png')}}" alt="Aneware Security">
+    <div class="landing-img-container">
+        <img class="landing-img" src="{{asset('img/coding.png')}}" alt="">
     </div>
+</section>
 
-</div>
 @endsection

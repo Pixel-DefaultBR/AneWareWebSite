@@ -42,4 +42,3 @@ class UserFactory extends Factory
         ]);
     }
 }
-

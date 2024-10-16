@@ -9,17 +9,14 @@ return [
     | Default Session Driver
     |--------------------------------------------------------------------------
     |
-
     | This option determines the default session driver that is utilized for
     | incoming requests. Laravel supports a variety of storage options to
     | persist session data. Database storage is a great default choice.
-
     |
     | Supported: "file", "cookie", "database", "apc",
     |            "memcached", "redis", "dynamodb", "array"
     |
     */
-
 
     'driver' => env('SESSION_DRIVER', 'database'),
 
@@ -31,7 +28,6 @@ return [
     |
     | Here you may specify the number of minutes that you wish the session
     | to be allowed to remain idle before it expires. If you want them
-
     | to expire immediately when the browser is closed then you may
     | indicate that via the expire_on_close configuration option.
 
@@ -41,7 +37,6 @@ return [
     'lifetime' => env('SESSION_LIFETIME', 120),
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
-
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +59,6 @@ return [
     | When utilizing the "file" session driver, the session files are placed
     | on disk. The default storage location is defined here; however, you
     | are free to provide another location where they should be stored.
-
     |
     */
 
@@ -81,9 +75,7 @@ return [
     |
     */
 
-
     'connection' => env('SESSION_CONNECTION'),
-
 
     /*
     |--------------------------------------------------------------------------
@@ -135,7 +127,6 @@ return [
     | Session Cookie Name
     |--------------------------------------------------------------------------
     |
-
     | Here you may change the name of the session cookie that is created by
     | the framework. Typically, you should not need to change this value
     | since doing so does not grant a meaningful security improvement.
@@ -176,7 +167,6 @@ return [
     */
 
     'domain' => env('SESSION_DOMAIN'),
-
 
     /*
     |--------------------------------------------------------------------------
@@ -238,6 +228,5 @@ return [
     */
 
     'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
-
 
 ];

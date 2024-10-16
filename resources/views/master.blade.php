@@ -1,145 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
-@if(auth()->check())
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/x-icon" href="{{asset('img/anew.png')}}">
+    <title>Aneware security</title>
+    <script src="https://kit.fontawesome.com/f22d008a67.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/home.css')}}">
+    <link rel="stylesheet" href="{{asset('css/report.css')}}">
+    <link rel="stylesheet" href="{{asset('css/profile.css')}}">
+    <link rel="stylesheet" href="{{asset('css/auth.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ secure_asset('css/style.css?v=' . time()) }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-            crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(!auth()->check())
+    <header class="navbar-menu">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid nav-items-wrapper">
+                <a href="{{route('site.home')}}" class="navbar-brand" id="logo">A-W Sec</a>
 
-        <script src="https://kit.fontawesome.com/f22d008a67.js" crossorigin="anonymous"></script>
-        <title>AneWare Security</title>
-    </head>
-
-    <body>
-        <nav class="navbar navbar-expand-lg nav-container">
-            <div class="container-fluid ">
-                <a class="navbar-brand" href="{{route('site.home')}}">A-W Sec</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <div class="collapse navbar-items navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('site.report.index')}}">Relatórios</a>
-                        </li>
-                        <li><a class="nav-link" href="{{route('site.code')}}">Códigos</a></li>
-                        <li><a class="nav-link" href="{{route('site.about')}}">Sobre nós</a></li>
+                        <div class="border-bottom-hover">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{route('site.report.index')}}">Relatorios</a>
+                            </li>
+                        </div>
+                        <div class="border-bottom-hover">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Codigos</a>
+                            </li>
+                        </div>
+                        <div class="border-bottom-hover">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sobre</a>
+                            </li>
+                        </div>
                     </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <img class="top-perfil-image" src="{{secure_asset('storage/img/' . (auth()->user()->image ?? 'default.jpg'))}}" />
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('app.dashboard.index')}}">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="{{route('app.index', auth()->user()->name)}}">Perfil</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{{route('app.auth.logout')}}">Sair</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div class="navbar-login-icon-wrapper" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 login-redirect-btn">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('auth.index')}}"><i
+                                        class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
+    </header>
 @else
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ secure_asset('css/style.css?v=' . time()) }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-            crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-        <script src="https://kit.fontawesome.com/f22d008a67.js" crossorigin="anonymous"></script>
-        <title>AneWare Security</title>
-    </head>
-
-    <body>
+    <header class="navbar-menu">
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid ">
-                <a class="navbar-brand" href="{{route('site.home')}}">A-W Sec</a>
+            <div class="container-fluid nav-items-wrapper">
+                <a href="{{route('site.home')}}" class="navbar-brand" id="logo">A-W Sec</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-items navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('site.report.index')}}">Relatórios</a>
-                        </li>
-                        <li><a class="nav-link" href="{{route('site.code')}}">Códigos</a></li>
-                        <li><a class="nav-link" href="{{route('site.about')}}">Sobre nós</a></li>
+                        <div class="border-bottom-hover">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{route('site.report.index')}}">Relatorios</a>
+                            </li>
+                        </div>
+                        <div class="border-bottom-hover">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Codigos</a>
+                            </li>
+                        </div>
+                        <div class="border-bottom-hover">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sobre</a>
+                            </li>
+                        </div>
                     </ul>
-                    <a class="btn bg-light btn-login" href="{{route('app.auth.index')}}"><i
-                            class="fa-solid fa-door-open"></i></a>
+                    <div class="navbar-login-icon-wrapper" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 login-redirect-btn">
+                            <li class="nav-item">
+                                <a href="{{route('site.profile.profile')}}"><img class="nav-link profile-img"
+                                        src="{{asset('storage/img/' . (auth()->user()->image ?? 'default.png'))}}">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
-    </body>
+    </header>
 @endif
-        <div class="container">
-            <div class="container py-2">
-                <div class="alert-container">
-                    @if (session('error'))
-                        <div class="alert alert-danger" role="alert">
-                            <span class="error-message">
-                                <i class="fa-solid fa-circle-exclamation"></i>{{session('error')}}
-                            </span>
-                        </div>
-                    @elseif($errors->any())
-                        @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger" role="alert">
-                                <span class="error-message"> <i class="fa-solid fa-circle-exclamation"></i> {{$error}}</span>
-                            </div>
-                        @endforeach
-                    @elseif(session('success'))
-                        <div class="alert alert-success" role="alert">
-                            <span class="success-message">
-                                <i class="fa-solid fa-check"></i>{{session('success')}}
-                            </span>
 
-                        </div>
-                    @endif
-                </div>
+<body>
+    <x-error-handle-card />
 
-                @yield('content')
-            </div>
-        </div>
+    <div class="container">
+        @yield('content')
+    </div>
 
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-            </ul>
-            <p class="text-center text-body-secondary">© 2023 AneWare, Inc</p>
-        </footer>
-         <script src="{{secure_asset('js/script.js?v=') . time() }}"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+</body>
+
 </html>
